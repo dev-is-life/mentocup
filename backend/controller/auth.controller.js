@@ -44,7 +44,7 @@ const login = async (req, res) => {
             return res.status(400).json({ message: "Password is incorrect!"})
         } 
         const token = jwt.sign({ userId: existUser._id }, process.env.JWT_SECRET_KEY)
-        return res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", maxAge: 1000 * 60 * 60 * 24 * 7 }).json({ user: existUser })
+        return res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "none", maxAge: 1000 * 60 * 60 * 24 * 7 }).json({ user: existUser })
     } catch (error) {
         res.status(500).json(error)
     }
@@ -66,7 +66,7 @@ const logout = async (req, res) => {
         res.clearCookie("token", {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "lax" : "lax",
+            sameSite: "none",
             path: "/"
         });
         res.json({ message: "Logged out successfully" });    
