@@ -6,12 +6,12 @@ const { Server } = require("socket.io");
 const cors = require('cors')
 
 const app = express()
-app.use(cors({ credentials: true, origin: ["https://mentocup.onrender.com"] }))
+app.use(cors({ credentials: true, origin: ["https://mentocup.vercel.app"] }))
 app.use(express.json())
 app.use(cookieParser())
 
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: ["https://mentocup.onrender.com"], methods: ["GET", "POST"] }})
+const io = new Server(server, { cors: { origin: ["https://mentocup.vercel.app"], methods: ["GET", "POST"] }})
 
 let users = []
 
