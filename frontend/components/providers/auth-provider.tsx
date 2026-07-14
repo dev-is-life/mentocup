@@ -33,7 +33,7 @@ const AuthProvider: FC<ChildProps> = ({ children }) => {
   }, [user])
   
   useEffect(() => {
-    connect(io('https://dream-legaue-tournament.onrender.com'))
+    connect(io('https://api-mentocup.onrender.com'))
     // connect(io('http://localhost:4000'))
   },[])
 
